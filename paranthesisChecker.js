@@ -1,10 +1,7 @@
 class BalanceParenthesis {
   #stack = [];
-  #closers = {
-    "{": "}",
-    "[": "]",
-    "(": ")",
-  };
+  #closers = '}])'
+
   #push(brace) {
     this.#stack.push(brace);
   }
@@ -17,8 +14,8 @@ class BalanceParenthesis {
 
   seeTheBalance() {
     let str = "[()]{}{[()()]()}";
-    for (let symbol of str.split("")) {
-      if (this.#closers[this.#peek()] === symbol) {
+    for (let symbol of str) {
+      if (this.#closers.includes(symbol)) {
         this.#pop();
       } else {
         this.#push(symbol);
